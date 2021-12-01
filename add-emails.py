@@ -22,8 +22,11 @@ people = list(csv.reader(file))
 file.close()
 # open file to write data to(should be csv) {can be same as file being read}
 wr = csv.writer(open('file_name.csv','a', newline=""))
-# 0-770
-for n in range(681,770):
+
+# currently configured for row 0 to 10 but you can change this
+start = 0
+end = 10
+for n in range(start,end):
   row = people[n]
   # making request
   email = requests.post("https://api.apollo.io/v1/people/match", headers=headers, data=data%(row[0], row[1], row[4]))
